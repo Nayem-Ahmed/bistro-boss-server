@@ -5,7 +5,7 @@ require('dotenv').config()
 var jwt = require('jsonwebtoken');
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 const port = process.env.PORT || 5000
-
+// midleware
 app.use(cors())
 app.use(express.json())
 
@@ -66,7 +66,7 @@ async function run() {
       })
       res.send({ token })
     })
-    // midlewares
+    //jwt midlewares
     const verifyToken = (req, res, next) => {
       if (!req.headers.authorization) {
         return res.status(401).sed({ meassage: "unauthorization" })
